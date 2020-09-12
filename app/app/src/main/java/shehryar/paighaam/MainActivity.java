@@ -209,8 +209,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        worker.removeReciever();
-        worker.removeNotification();
+        if (worker != null) {
+            worker.removeReciever();
+            worker.removeNotification();
+        }
         ses.shutdown();
     }
 
